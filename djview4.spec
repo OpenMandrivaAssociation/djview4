@@ -11,6 +11,7 @@ URL:            http://djvu.sourceforge.net/djview4.html
 Source0:        http://downloads.sourceforge.net/djvu/djview4-%{version}%{rel}.tar.gz
 BuildRequires:  djvulibre-devel
 BuildRequires:  qt4-devel
+BuildRequires:  tiff-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description

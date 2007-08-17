@@ -9,6 +9,9 @@ License:        GPL
 Group:          Publishing
 URL:            http://djvu.sourceforge.net/djview4.html
 Source0:        http://downloads.sourceforge.net/djvu/djview4-%{version}%{rel}.tar.gz
+Requires(post): desktop-file-utils
+Requires(postun): desktop-file-utils
+BuildRequires:  desktop-file-utils
 BuildRequires:  djvulibre-devel
 BuildRequires:  qt4-devel
 BuildRequires:  tiff-devel

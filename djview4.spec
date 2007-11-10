@@ -1,14 +1,14 @@
 %define rel -2
 
 Name:           djview4
-Version:        4.1
+Version:        4.1.2
 Release:        %mkrel 1
 Epoch:          0
 Summary:        DjVu viewer and browser plugin
 License:        GPL
 Group:          Publishing
 URL:            http://djvu.sourceforge.net/djview4.html
-Source0:        http://downloads.sourceforge.net/djvu/djview4-%{version}%{rel}.tar.gz
+Source0:        http://downloads.sourceforge.net/djvu/djview4-4.1%{rel}.tar.gz
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 BuildRequires:  desktop-file-utils
@@ -50,7 +50,7 @@ Provides:       djvulibre-browser-plugin = %{epoch}:%{version}-%{release}
 UNIX-based DjVu Netscape plugin.
 
 %prep
-%setup -q -n %{name}-%{version}.orig
+%setup -q -n %{name}-4.1.orig
 
 %build
 export QTDIR=%{_prefix}/lib/qt4

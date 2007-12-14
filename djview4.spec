@@ -19,7 +19,6 @@ BuildRequires:  tiff-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
-
 This package contains the djview4 viewer and browser plugin.
 This new viewer relies on the DjVulibre library and the Qt4 toolkit.
 

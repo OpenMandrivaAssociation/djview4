@@ -16,7 +16,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  djvulibre-devel
 BuildRequires:  qt4-devel
 BuildRequires:  tiff-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 This package contains the djview4 viewer and browser plugin.

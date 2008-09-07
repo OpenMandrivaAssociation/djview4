@@ -2,7 +2,7 @@
 
 Name:           djview4
 Version:        %{majmin}
-Release:        %mkrel 2
+Release:        %mkrel 3
 Epoch:          0
 Summary:        DjVu viewer and browser plugin
 License:        GPL

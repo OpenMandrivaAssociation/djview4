@@ -1,14 +1,12 @@
-%define majmin 4.3
-
 Name:           djview4
-Version:        %{majmin}
-Release:        %mkrel 3
+Version:        4.4
+Release:        %mkrel 1
 Epoch:          0
 Summary:        DjVu viewer and browser plugin
 License:        GPL
 Group:          Publishing
 URL:            http://djvu.sourceforge.net/djview4.html
-Source0:        http://downloads.sourceforge.net/djvu/djview4-%{majmin}.tar.gz
+Source0:        http://downloads.sourceforge.net/djvu/djview4-4.4.tar.gz
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 BuildRequires:  desktop-file-utils
@@ -49,7 +47,7 @@ Provides:       djvulibre-browser-plugin = %{epoch}:%{version}-%{release}
 UNIX-based DjVu Netscape plugin.
 
 %prep
-%setup -q -n djview4-%{majmin}
+%setup -q -n djview4-%{version}
 
 %build
 export QTDIR=%{qt4dir}

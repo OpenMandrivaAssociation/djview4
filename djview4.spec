@@ -1,12 +1,13 @@
 Name:           djview4
-Version:        4.4
+Version:        4.5
 Release:        %mkrel 1
 Epoch:          0
 Summary:        DjVu viewer and browser plugin
-License:        GPL
+License:        GPLv2+
 Group:          Publishing
 URL:            http://djvu.sourceforge.net/djview4.html
-Source0:        http://downloads.sourceforge.net/djvu/djview4-4.4.tar.gz
+Source0:        http://downloads.sourceforge.net/djvu/%{name}-%{version}.tar.gz
+Patch0:		djview4-4.5-mdv-fix-str-fmt.patch
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 BuildRequires:  desktop-file-utils
@@ -48,6 +49,7 @@ UNIX-based DjVu Netscape plugin.
 
 %prep
 %setup -q -n djview4-%{version}
+%patch0 -p1 -b .strfmt
 
 %build
 export QTDIR=%{qt4dir}

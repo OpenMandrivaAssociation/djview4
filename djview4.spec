@@ -1,6 +1,6 @@
 Name:           djview4
 Version:        4.5
-Release:        %mkrel 2
+Release:        %mkrel 3
 Epoch:          0
 Summary:        DjVu viewer and browser plugin
 License:        GPLv2+
@@ -72,6 +72,9 @@ export QTDIR=%{qt4dir}
 %{__cp} -a desktopfiles/hi32-djview4.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/djvulibre-djview4.png
 %{__mkdir_p} %{buildroot}%{_datadir}/icons/hicolor/64x64/apps
 %{__cp} -a desktopfiles/hi64-djview4.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/djvulibre-djview4.png
+%{__mkdir_p} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
+%{__cp} -a desktopfiles/djview.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/djvulibre-djview4.svg
+
 %{_bindir}/desktop-file-install \
   --vendor="" \
   --remove-category="Application" \
@@ -102,7 +105,7 @@ export QTDIR=%{qt4dir}
 %{_mandir}/man1/djview4.1*
 %{_mandir}/man1/djview.1*
 %{_datadir}/applications/djvulibre-djview4.desktop
-%{_datadir}/icons/hicolor/*/apps/djvulibre-djview4.png
+%{_datadir}/icons/hicolor/*/apps/djvulibre-djview4.*
 
 %files -n mozilla-plugin-dejavu
 %defattr(0644,root,root,0755)

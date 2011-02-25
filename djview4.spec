@@ -1,14 +1,12 @@
 Name:           djview4
 Version:        4.6
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 Summary:        DjVu viewer and browser plugin
 License:        GPLv2+
 Group:          Publishing
 URL:            http://djvu.sourceforge.net/djview4.html
 Source0:        http://downloads.sourceforge.net/djvu/%{name}-%{version}.tar.gz
-Requires(post): desktop-file-utils
-Requires(postun): desktop-file-utils
 BuildRequires:  desktop-file-utils
 BuildRequires:  djvulibre-devel
 BuildRequires:  qt4-devel
@@ -80,16 +78,6 @@ export QTDIR=%{qt4dir}
   --add-category="Graphics" \
   --add-category="Viewer" \
   --dir %{buildroot}%{_datadir}/applications desktopfiles/djvulibre-djview4.desktop
-
-%post
-%update_icon_cache hicolor
-%{update_mime_database}
-%{update_desktop_database}
-
-%postun
-%clean_icon_cache hicolor
-%{clean_mime_database}
-%{clean_desktop_database}
 
 %clean
 %{__rm} -rf %{buildroot}

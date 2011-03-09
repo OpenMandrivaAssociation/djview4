@@ -1,38 +1,36 @@
 Name:           djview4
-Version:        4.6
-Release:        %mkrel 2
+Version:        4.7
+Release:        %mkrel 1
 Epoch:          0
 Summary:        DjVu viewer and browser plugin
 License:        GPLv2+
 Group:          Publishing
 URL:            http://djvu.sourceforge.net/djview4.html
-Source0:        http://downloads.sourceforge.net/djvu/%{name}-%{version}.tar.gz
+Source0:        http://downloads.sourceforge.net/djvu/djview-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
-BuildRequires:  djvulibre-devel
-BuildRequires:  qt4-devel
+BuildRequires:  djvulibre-devel >= 3.5.18
+BuildRequires:  qt4-devel >= 4.2.0
 BuildRequires:  tiff-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 This package contains the djview4 viewer and browser plugin.
-This new viewer relies on the DjVulibre library and the Qt4 toolkit.
 
 Highlights:
 
-- entirely based on the public djvulibre api.
-- entirely written in portable Qt4.
-- has been reported to work with Qt/Mac.
-- should work with Qt/Windows as well.
-- continuous scrolling of pages
-- side-by-side display of pages
-- ability to specify a url to the djview command
-- all plugin and cgi options available from the command line
-- all silly annotations implemented
-- display thumbnails as a grid
-- display outlines
-- page names supported (see djvused command set-page-title)
-- metadata dialog (see djvused command set-meta)
-- implemented as reusable Qt widgets
+- Entirely based on the public djvulibre api.
+- Entirely written in portable Qt4.
+- Works with Qt/X11, Qt/Mac, and Qt/Windows.
+- Continuous scrolling of pages.
+- Side-by-side display of pages.
+- Ability to specify a url to the djview command.
+- All plugin and cgi options available from the command line.
+- All silly annotations implemented.
+- Display thumbnails as a grid.
+- Display outlines.
+- Page names supported (see djvused command set-page-title).
+- Metadata dialog (see djvused command set-meta).
+- Mmplemented as reusable Qt widgets.
 
 %package -n mozilla-plugin-dejavu
 Summary:        UNIX-based DjVu Netscape plugin
@@ -45,7 +43,7 @@ Provides:       djvulibre-browser-plugin = %{epoch}:%{version}-%{release}
 UNIX-based DjVu Netscape plugin.
 
 %prep
-%setup -q -n djview4-%{version}
+%setup -q -n djview-%{version}
 
 %build
 export QTDIR=%{qt4dir}
@@ -84,7 +82,7 @@ export QTDIR=%{qt4dir}
 
 %files
 %defattr(0644,root,root,0755)
-%doc COPYING COPYRIGHT INSTALL NEWS README README_packagers README_translations TODO
+%doc COPYING COPYRIGHT INSTALL NEWS README README_packagers README_translations
 %attr(0755,root,root) %{_bindir}/djview
 %attr(0755,root,root) %{_bindir}/djview4
 %{_datadir}/djvu/djview4/
@@ -99,3 +97,4 @@ export QTDIR=%{qt4dir}
 %attr(0755,root,root) %{_libdir}/netscape/plugins/nsdejavu.so
 %attr(0755,root,root) %{_libdir}/mozilla/plugins/nsdejavu.so
 %{_mandir}/man1/nsdejavu.1*
+

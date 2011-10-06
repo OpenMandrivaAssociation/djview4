@@ -7,6 +7,7 @@ License:        GPLv2+
 Group:          Publishing
 URL:            http://djvu.sourceforge.net/djview4.html
 Source0:        http://downloads.sourceforge.net/djvu/djview-%{version}.tar.gz
+Patch0:		djview-4.8-swap.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  djvulibre-devel >= 3.5.18
 BuildRequires:  qt4-devel >= 4.2.0
@@ -44,6 +45,7 @@ UNIX-based DjVu Netscape plugin.
 
 %prep
 %setup -q -n djview-%{version}
+%patch0 -p1 -b .swap
 
 %build
 export QTDIR=%{qt4dir}

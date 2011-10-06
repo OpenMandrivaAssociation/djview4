@@ -1,5 +1,5 @@
 Name:           djview4
-Version:        4.7
+Version:        4.8
 Release:        %mkrel 1
 Epoch:          0
 Summary:        DjVu viewer and browser plugin

@@ -100,3 +100,79 @@ export QTDIR=%{qt4dir}
 %attr(0755,root,root) %{_libdir}/mozilla/plugins/nsdejavu.so
 %{_mandir}/man1/nsdejavu.1*
 
+
+
+%changelog
+* Thu Oct 06 2011 Andrey Bondrov <abondrov@mandriva.org> 0:4.8-1
++ Revision: 703281
+- Add patch0 to avoid swap function overloading
+- New version: 4.8
+
+* Wed Mar 09 2011 Lev Givon <lev@mandriva.org> 0:4.7-1
++ Revision: 643129
+- Update to 4.7.
+
+* Sat Feb 26 2011 Tomas Kindl <supp@mandriva.org> 0:4.6-2
++ Revision: 639824
+- rebuilt
+
+* Mon Nov 01 2010 Lev Givon <lev@mandriva.org> 0:4.6-1mdv2011.0
++ Revision: 591630
+- Update to 4.6.
+  Remove format string patch (no longer necessary).
+
+* Wed Jul 28 2010 Lev Givon <lev@mandriva.org> 0:4.5-3mdv2011.0
++ Revision: 562702
+- Include svg icon.
+
+* Wed Mar 17 2010 Lev Givon <lev@mandriva.org> 0:4.5-2mdv2010.1
++ Revision: 524611
+- Include high-resolution icon in package.
+
+* Sat Dec 12 2009 Jérôme Brenier <incubusss@mandriva.org> 0:4.5-1mdv2010.1
++ Revision: 477780
+- new version 4.5
+- fix str fmt
+- fix license tag
+
+* Sat Oct 18 2008 David Walluck <walluck@mandriva.org> 0:4.4-1mdv2009.1
++ Revision: 295151
+- 4.4
+
+* Sun Sep 07 2008 Frederik Himpe <fhimpe@mandriva.org> 0:4.3-3mdv2009.0
++ Revision: 282360
+- Rebuild for new djvulibre
+
+* Thu Aug 07 2008 Thierry Vignaud <tv@mandriva.org> 0:4.3-2mdv2009.0
++ Revision: 266564
+- rebuild early 2009.0 package (before pixel changes)
+
+* Sun Apr 20 2008 David Walluck <walluck@mandriva.org> 0:4.3-1mdv2009.0
++ Revision: 196002
+- 4.3
+
+* Wed Jan 16 2008 David Walluck <walluck@mandriva.org> 0:4.2.3-1mdv2008.1
++ Revision: 153858
+- use gentoo version number which includes the release in the version string
+
+  + Olivier Blin <blino@mandriva.org>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+    - kill extra spacing at top of description
+
+* Thu Dec 13 2007 David Walluck <walluck@mandriva.org> 0:4.2-1mdv2008.1
++ Revision: 119479
+- 4.2-3
+
+* Sat Nov 10 2007 David Walluck <walluck@mandriva.org> 0:4.1.2-1mdv2008.1
++ Revision: 107319
+- change version to match gentoo
+
+* Fri Aug 17 2007 David Walluck <walluck@mandriva.org> 0:4.1-1mdv2008.0
++ Revision: 65324
+- needs desktop-file-utils
+- BuildRequires: tiff-devel
+- Import djview4
+

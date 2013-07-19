@@ -1,12 +1,12 @@
 Name:           djview4
-Version:        4.8
-Release:        %mkrel 1
+Version:        4.9
+Release:        1
 Epoch:          0
 Summary:        DjVu viewer and browser plugin
 License:        GPLv2+
 Group:          Publishing
 URL:            http://djvu.sourceforge.net/djview4.html
-Source0:        http://downloads.sourceforge.net/djvu/djview-%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/djvu/files/DjView/4.9/djview-%{version}.tar.gz
 Patch0:		djview-4.8-swap.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  djvulibre-devel >= 3.5.18
@@ -175,4 +175,5 @@ export QTDIR=%{qt4dir}
 - needs desktop-file-utils
 - BuildRequires: tiff-devel
 - Import djview4
+
 

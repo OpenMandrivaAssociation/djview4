@@ -1,18 +1,18 @@
+%define debug_package %{nil}
+
 Name:           djview4
-Version:        4.8
-Release:        %mkrel 1
+Version:        4.9
+Release:        1
 Epoch:          0
 Summary:        DjVu viewer and browser plugin
 License:        GPLv2+
 Group:          Publishing
 URL:            http://djvu.sourceforge.net/djview4.html
-Source0:        http://downloads.sourceforge.net/djvu/djview-%{version}.tar.gz
-Patch0:		djview-4.8-swap.patch
+Source0:        https://sourceforge.net/projects/djvu/files/DjView/4.9/djview-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
 BuildRequires:  djvulibre-devel >= 3.5.18
 BuildRequires:  qt4-devel >= 4.2.0
 BuildRequires:  tiff-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 This package contains the djview4 viewer and browser plugin.
@@ -44,32 +44,26 @@ Provides:       djvulibre-browser-plugin = %{epoch}:%{version}-%{release}
 UNIX-based DjVu Netscape plugin.
 
 %prep
-%setup -q -n djview-%{version}
-%patch0 -p1 -b .swap
+%setup -q
 
 %build
 export QTDIR=%{qt4dir}
-%{configure2_5x}
-%{make}
+%configure2_5x
+%make
 
 %install
-%{__rm} -rf %{buildroot}
-%{makeinstall_std}
-%{__rm} -r %{buildroot}%{_datadir}/djvu/djview4/desktop
-%if 0
-%{__rm} %{buildroot}%{_bindir}/djview
-%{__rm} %{buildroot}%{_mandir}/man1/djview.1
-%endif
-%{__mkdir_p} %{buildroot}%{_libdir}/mozilla/plugins
-%{__mv} %{buildroot}%{_libdir}/netscape/plugins/nsdejavu.so %{buildroot}%{_libdir}/mozilla/plugins/nsdejavu.so
-%{__ln_s} %{_libdir}/mozilla/plugins/nsdejavu.so %{buildroot}%{_libdir}/netscape/plugins/nsdejavu.so
+%makeinstall_std
+%__rm -r %{buildroot}%{_datadir}/djvu/djview4/desktop
+%__mkdir_p %{buildroot}%{_libdir}/mozilla/plugins
+%__mv %{buildroot}%{_libdir}/netscape/plugins/nsdejavu.so %{buildroot}%{_libdir}/mozilla/plugins/nsdejavu.so
+%__ln_s %{_libdir}/mozilla/plugins/nsdejavu.so %{buildroot}%{_libdir}/netscape/plugins/nsdejavu.so
 
-%{__mkdir_p} %{buildroot}%{_datadir}/icons/hicolor/32x32/apps
-%{__cp} -a desktopfiles/hi32-djview4.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/djvulibre-djview4.png
-%{__mkdir_p} %{buildroot}%{_datadir}/icons/hicolor/64x64/apps
-%{__cp} -a desktopfiles/hi64-djview4.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/djvulibre-djview4.png
-%{__mkdir_p} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
-%{__cp} -a desktopfiles/djview.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/djvulibre-djview4.svg
+%__mkdir_p %{buildroot}%{_datadir}/icons/hicolor/32x32/apps
+%__cp -a desktopfiles/hi32-djview4.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/djvulibre-djview4.png
+%__mkdir_p %{buildroot}%{_datadir}/icons/hicolor/64x64/apps
+%__cp -a desktopfiles/hi64-djview4.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/djvulibre-djview4.png
+%__mkdir_p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
+%__cp -a desktopfiles/djview.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/djvulibre-djview4.svg
 
 %{_bindir}/desktop-file-install \
   --vendor="" \
@@ -78,9 +72,6 @@ export QTDIR=%{qt4dir}
   --add-category="Graphics" \
   --add-category="Viewer" \
   --dir %{buildroot}%{_datadir}/applications desktopfiles/djvulibre-djview4.desktop
-
-%clean
-%{__rm} -rf %{buildroot}
 
 %files
 %defattr(0644,root,root,0755)
@@ -175,4 +166,5 @@ export QTDIR=%{qt4dir}
 - needs desktop-file-utils
 - BuildRequires: tiff-devel
 - Import djview4
+
 

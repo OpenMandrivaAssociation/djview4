@@ -11,6 +11,8 @@ Source0:        https://sourceforge.net/projects/djvu/files/DjView/%{version}/dj
 
 BuildRequires:  qmake5
 BuildRequires:  desktop-file-utils
+BuildRequires:  qt5-linguist
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(ddjvuapi)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)

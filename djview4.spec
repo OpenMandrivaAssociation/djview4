@@ -1,18 +1,22 @@
 %define debug_package %{nil}
 
 Name:           djview4
-Version:        4.9
-Release:        2
-Epoch:          0
+Version:        4.12
+Release:        1
 Summary:        DjVu viewer and browser plugin
 License:        GPLv2+
 Group:          Publishing
 URL:            http://djvu.sourceforge.net/djview4.html
-Source0:        https://sourceforge.net/projects/djvu/files/DjView/4.9/djview-%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/djvu/files/DjView/%{version}/djview-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
-BuildRequires:  djvulibre-devel >= 3.5.18
-BuildRequires:  qt4-devel >= 4.2.0
-BuildRequires:  tiff-devel
+BuildRequires:  pkgconfig(ddjvuapi)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(libtiff-4)
 
 %description
 This package contains the djview4 viewer and browser plugin.
@@ -33,64 +37,38 @@ Highlights:
 - Metadata dialog (see djvused command set-meta).
 - Mmplemented as reusable Qt widgets.
 
-%package -n mozilla-plugin-dejavu
-Summary:        UNIX-based DjVu Netscape plugin
-Group:          Publishing
-Requires:       %{name} = %{epoch}:%{version}-%{release}
-Obsoletes:      djvulibre-browser-plugin < %{epoch}:%{version}-%{release}
-Provides:       djvulibre-browser-plugin = %{epoch}:%{version}-%{release}
-
-%description -n mozilla-plugin-dejavu
-UNIX-based DjVu Netscape plugin.
-
 %prep
 %setup -q
 
 %build
-export QTDIR=%{qt4dir}
-%configure2_5x
-%make
+./autogen.sh
+%configure --disable-nsdejavu
+%make_build
 
 %install
-%makeinstall_std
-%__rm -r %{buildroot}%{_datadir}/djvu/djview4/desktop
-%__mkdir_p %{buildroot}%{_libdir}/mozilla/plugins
-%__mv %{buildroot}%{_libdir}/netscape/plugins/nsdejavu.so %{buildroot}%{_libdir}/mozilla/plugins/nsdejavu.so
-%__ln_s %{_libdir}/mozilla/plugins/nsdejavu.so %{buildroot}%{_libdir}/netscape/plugins/nsdejavu.so
+%make_install
 
-%__mkdir_p %{buildroot}%{_datadir}/icons/hicolor/32x32/apps
-%__cp -a desktopfiles/hi32-djview4.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/djvulibre-djview4.png
-%__mkdir_p %{buildroot}%{_datadir}/icons/hicolor/64x64/apps
-%__cp -a desktopfiles/hi64-djview4.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/djvulibre-djview4.png
-%__mkdir_p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
-%__cp -a desktopfiles/djview.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/djvulibre-djview4.svg
+ln -s %{_bindir}/djview %{buildroot}%{_bindir}/%{name}
 
-%{_bindir}/desktop-file-install \
-  --vendor="" \
-  --remove-category="Application" \
-  --add-category="Qt" \
-  --add-category="Graphics" \
-  --add-category="Viewer" \
-  --dir %{buildroot}%{_datadir}/applications desktopfiles/djvulibre-djview4.desktop
+%{__mkdir_p} %{buildroot}%{_datadir}/icons/hicolor/32x32/apps
+%{__cp} -a desktopfiles/prebuilt-hi32-%{name}.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/djvulibre-%{name}.png
+%{__mkdir_p} %{buildroot}%{_datadir}/icons/hicolor/64x64/apps
+%{__cp} -a desktopfiles/prebuilt-hi64-%{name}.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/djvulibre-%{name}.png
+%{__mkdir_p} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
+%{__cp} -a desktopfiles/djview.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/djvulibre-%{name}.svg
+
+%{__cp} %{buildroot}%{_mandir}/man1/djview.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
-%defattr(0644,root,root,0755)
-%doc COPYING COPYRIGHT INSTALL NEWS README README_packagers README_translations
-%attr(0755,root,root) %{_bindir}/djview
-%attr(0755,root,root) %{_bindir}/djview4
-%{_datadir}/djvu/djview4/
-%{_mandir}/man1/djview4.1*
+%doc COPYING COPYRIGHT NEWS README README_translations
+%{_bindir}/djview
+%{_bindir}/%{name}
+%{_datadir}/djvu/%{name}/
+%{_mandir}/man1/%{name}.1*
 %{_mandir}/man1/djview.1*
-%{_datadir}/applications/djvulibre-djview4.desktop
-%{_datadir}/icons/hicolor/*/apps/djvulibre-djview4.*
-
-%files -n mozilla-plugin-dejavu
-%defattr(0644,root,root,0755)
-%doc nsdejavu/README
-%attr(0755,root,root) %{_libdir}/netscape/plugins/nsdejavu.so
-%attr(0755,root,root) %{_libdir}/mozilla/plugins/nsdejavu.so
-%{_mandir}/man1/nsdejavu.1*
-
+%{_datadir}/applications/djvulibre-%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/djvulibre-%{name}.*
+%{_datadir}/icons/hicolor/*/mimetypes/djvulibre-%{name}.*
 
 
 %changelog

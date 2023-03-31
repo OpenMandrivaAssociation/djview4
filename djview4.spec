@@ -2,7 +2,7 @@
 
 Name:           djview4
 Version:        4.12
-Release:        1
+Release:        2
 Summary:        DjVu viewer and browser plugin
 License:        GPLv2+
 Group:          Publishing

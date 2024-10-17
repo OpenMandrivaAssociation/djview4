@@ -6,7 +6,7 @@ Release:        2
 Summary:        DjVu viewer and browser plugin
 License:        GPLv2+
 Group:          Publishing
-URL:            http://djvu.sourceforge.net/djview4.html
+URL:            https://djvu.sourceforge.net/djview4.html
 Source0:        https://sourceforge.net/projects/djvu/files/DjView/%{version}/djview-%{version}.tar.gz
 
 BuildRequires:  qmake5
